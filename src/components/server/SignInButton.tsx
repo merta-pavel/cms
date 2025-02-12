@@ -1,8 +1,4 @@
 import { signIn, auth } from "@/libs/auth";
-import { PrismaClient } from "@prisma/client";
-import { Console } from "console";
-
-const prisma = new PrismaClient();
 
 interface User {
   id: string;

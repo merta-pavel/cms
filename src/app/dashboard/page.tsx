@@ -2,9 +2,9 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from 'react';
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 import Link from "next/link";
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -46,7 +46,7 @@ export default function Dashboard() {
     };
 
     fetchArticles();
-  }, []);
+  }, [session?.user?.id]);
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -105,7 +105,7 @@ export default function Dashboard() {
               placeholder="Tags"
               value={tagInput}
               onChange={(e) => setTagInput(e.target.value)}
-              onKeyPress={handleTagInputKeyPress}
+              onKeyDown={handleTagInputKeyPress}
               className="form-input"
             />
             <div className="Tagscontainer">

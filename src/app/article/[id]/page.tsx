@@ -1,8 +1,11 @@
 import { prisma } from "@/lib/prisma";
 
-export default async function ArticlePage({ params }: { params: { id: string } }) {
+export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+
+  const par = await params 
+
   const article = await prisma.article.findUnique({
-    where: { id: Number(params.id) },
+    where: { id: par.id },
     include: { author: true, tags: true },
   });
 

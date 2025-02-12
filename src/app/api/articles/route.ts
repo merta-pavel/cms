@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
       : await prisma.article.findMany();
 
     return NextResponse.json(articles, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Error fetching articles' }, { status: 500 });
   }
 }

@@ -1,4 +1,3 @@
-import { auth } from "@/lib/auth";
 import { useSession } from "next-auth/react";
 
 
